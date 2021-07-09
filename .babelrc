@@ -1,0 +1,23 @@
+{
+  "plugins": [
+    ["@babel/plugin-proposal-optional-chaining", { "loose": false }],
+    '@babel/plugin-syntax-class-properties'
+    // ["@babel/plugin-proposal-pipeline-operator", { "proposal": "minimal"}],
+    // "console",
+  ]
+}
+// babel-plugin-maccros alread included:
+//   import styled from 'styled-components/macro';
+// console: console.scope('Title of my scope params');
+// import-graphql: import .graphql files directly
+// optional-chaining: const baz = obj?.foo?.bar?.baz;
+// logical-assignment-operators: a ||= b (a=b if a is falsy) a &&= b (a=b if a is truthy)
+// pipeline-operator:
+//    const user = url
+//      |> api.get
+//      |> await
+//      |> (r => r.json())
+//      |> await
+//      |> (j => j.data.user);
+
+// vim:syn=json5
