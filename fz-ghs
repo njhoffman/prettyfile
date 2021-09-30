@@ -1,0 +1,26 @@
+#!/bin/bash
+
+scriptname=$(basename ${BASH_SOURCE[0]})
+tmpfile=$(mktemp -q "$scriptname.XXXX")
+
+query_format="echo -e \"one\ntwo\nthree\n$scriptname\n$tmpfile\n%s\""
+initial_query=$(printf "$query_format" '')
+reload_query=$(printf "$query_format" {q})
+
+results="$(\
+  eval "$initial_query" \
+  | fzf \
+    --multi \
+    --prompt='Rg> ' \
+    --disabled \
+    --delimiter=':' \
+    --with-nth='1,2,4..' \
+    --bind="change:reload:$reload_query" \
+    --bind="ctrl-r:execute-silent(echo {} > $tmpfile)+abort" \
+    --preview='echo {1,2}' \
+    --preview-window='+{2}-/2' \
+)"
+
+last_action=$(cat "$tmpfile")
+echo -e "last action: $last_action\n"
+echo "$results"

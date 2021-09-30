@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+
+# ALT-I - Paste the selected entry from locate output into the command line
+function _fz-locate {
+  local selected
+  local target="${1:-.}"
+  [[ -n "$FZF_TMUX" ]] && fzf="fzf-tmux -p" || fzf="fzf"
+  local bindkeys="--bind 'change:reload(locate {q} | prettyfile)'"
+  bindkeys+=" --bind 'ctrl-y:execute-silent(echo {+} | xsel --clipboard)'"
+  bindkeys+=" --bind 'ctrl-e:execute(nvim {+} < /dev/tty > /dev/tty 2>&1)'"
+
+  local fzfcmd="\
+    $fzf --with-nth=2.. --no-hscroll --prompt='[locate] ' \
+    $bindkeys \
+    --delimiter=\"\|\" -q \"$1\" \
+    < <(locate \"$target\" | prettyfile)"
+  selected=$(eval $fzfcmd | awk -F'|' '{print $1}')
+
+  echo "$selected"
+}
+_fz-locate "$*"

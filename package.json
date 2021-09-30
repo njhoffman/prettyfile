@@ -1,15 +1,18 @@
 {
-  "name": "fileman",
+  "name": "prettyfile",
   "version": "1.0.0",
   "description": "",
-  "main": ".eslintrc.js",
+  "bin": {
+    "prettyfile": "./lib/index.js"
+  },
+  "main": "./lib/index.js",
   "scripts": {
     "test": "NODE_ENV=test mocha",
-    "lint": "esw lib --color ",
+    "lint": "esw lib config --color ",
     "lint:fix": "npm run lint -- --fix",
     "lint:watch": "npm run lint -- --cache --watch --clear",
-    "start": "node lib/index.js",
-    "dev": "nodemon",
+    "start": "node lib/cli.js",
+    "dev": "nodemon -x 'node lib/devicons-generate.js -n 20 | node lib/cli.js'",
     "test:watch": "NODE_ENV=test chokidar 'test/**/*.js' 'lib/**/*.js' -c 'node_modules/.bin/mocha'",
     "test:coverage": "NODE_ENV=test nyc mocha"
   },
@@ -34,6 +37,7 @@
     "eslint-config-standard": "16.0.3",
     "eslint-plugin-babel": "5.3.1",
     "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-promise": "5.1.0",
     "eslint-plugin-unused-imports": "1.1.1",
@@ -47,10 +51,14 @@
     "sinon-chai": "3.7.0"
   },
   "dependencies": {
+    "ago": "^1.0.0",
     "args-command-parser": "^1.2.4",
     "args-parser": "^1.3.0",
     "chalk": "^4.1.1",
     "faker": "^5.5.3",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "rc": "^1.2.8",
+    "time-ago": "^0.2.1",
+    "yaml": "^1.10.2"
   }
 }

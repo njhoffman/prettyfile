@@ -1,0 +1,4 @@
+[38;2;77;90;94m    [39m/opt/bin/eritrea_back_end_e_commerce.csh
+[38;2;109;128;134m    [39m/Applications/fresh.edm.rpm
+[38;2;133;76;199m    [39m/opt/include/monitor.suo
+[38;2;255;177;59m    [39m/var/spool/outdoors_synergy_purple.glb
