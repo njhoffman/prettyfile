@@ -14,8 +14,8 @@ function _fz-locate {
     $bindkeys \
     --delimiter=\"\|\" -q \"$1\" \
     < <(locate \"$target\" | prettyfile)"
+  stty sane
   selected=$(eval $fzfcmd | awk -F'|' '{print $1}')
-
   echo "$selected"
 }
 _fz-locate "$*"
