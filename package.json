@@ -6,11 +6,15 @@
     "prettyfile": "./lib/index.js"
   },
   "main": "./lib/index.js",
+  "pkg": {
+    "targets": [ "latest" ]
+  },
   "scripts": {
     "test": "NODE_ENV=test mocha",
     "lint": "esw lib config --color ",
     "lint:fix": "npm run lint -- --fix",
     "lint:watch": "npm run lint -- --cache --watch --clear",
+    "build": "pkg --target latest lib/index.js",
     "start": "node lib/cli.js",
     "dev": "nodemon -x 'node lib/devicons-generate.js -n 20 | node lib/cli.js'",
     "test:watch": "NODE_ENV=test chokidar 'test/**/*.js' 'lib/**/*.js' -c 'node_modules/.bin/mocha'",
