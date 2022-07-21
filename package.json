@@ -7,7 +7,9 @@
   },
   "main": "./lib/index.js",
   "pkg": {
-    "targets": [ "latest" ]
+    "targets": [
+      "latest"
+    ]
   },
   "scripts": {
     "test": "NODE_ENV=test mocha",
@@ -56,13 +58,14 @@
   },
   "dependencies": {
     "ago": "^1.0.0",
-    "args-command-parser": "^1.2.4",
+    "args-command-parser": "^1.2.5",
     "args-parser": "^1.3.0",
-    "chalk": "^4.1.1",
-    "faker": "^5.5.3",
+    "chalk": "^5.0.1",
+    "faker": "^6.6.6",
     "lodash": "^4.17.21",
     "rc": "^1.2.8",
     "time-ago": "^0.2.1",
-    "yaml": "^1.10.2"
+    "winston": "^3.7.2",
+    "yaml": "^2.1.0"
   }
 }
